@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
@@ -101,9 +102,31 @@ namespace Zork
 
         public static void Look(Game game) => game.Output.WriteLine(game.Player.Location.Description);
 
+        //Refer to 24:15 in Part 1 video
+        public static void StartFromFile(string gamefilename)
+        {
+            if (!File.Exists(gamefilename))
+            {
+                throw new FileNotFoundException("Expected File.", gamefilename);
+            }
+
+            Start(File.ReadAllText(gamefilename));
+
+        }
+
         private static void Quit(Game game) => game.IsRunning = false;
 
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context) => Player = new Player(World, StartingLocation);
+   
+    public static Game Load(string defaultGameFilename) //11/12/21
+        {
+            Game game = JsonConvert.DeserializeObject<Game>(defaultGameFilename);
+            game.Player = game.World.SpawnPlayer();
+
+            return game;
+        }
+    
     }
+
 }
