@@ -9,3 +9,6 @@ C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2
 C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.csproj.Fody.CopyLocal.cache
 C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.dll
 C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.pdb
+C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Unity\Assets\netstandard2.0\Zork.Common.deps.json
+C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Unity\Assets\netstandard2.0\Zork.Common.dll
+C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Unity\Assets\netstandard2.0\Zork.Common.pdb
