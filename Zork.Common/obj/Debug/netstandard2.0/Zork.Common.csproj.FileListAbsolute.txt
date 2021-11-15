@@ -12,3 +12,10 @@ C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2
 C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Unity\Assets\netstandard2.0\Zork.Common.deps.json
 C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Unity\Assets\netstandard2.0\Zork.Common.dll
 C:\Users\cire3\Documents\GitHub\Zork_In_Unity\Zork.Unity\Assets\netstandard2.0\Zork.Common.pdb
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.csproj.AssemblyReference.cache
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.AssemblyInfoInputs.cache
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.AssemblyInfo.cs
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.csproj.CoreCompileInputs.cache
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.dll
+C:\Users\ER247979\Documents\GitHub\Zork_In_Unity\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.pdb

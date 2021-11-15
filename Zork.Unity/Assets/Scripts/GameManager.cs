@@ -1,8 +1,21 @@
 
 using UnityEngine;
 using Zork;
+using Newtonsoft.Json;
+
 public class GameManager : MonoBehaviour
+    
 {
+
+    [SerializeField]
+    private UnityinputService InputService
+
+    [SerializeField]
+    private UnityOutputService OutputService;
+
+
+
+
 
     void Awake()
     {
@@ -15,7 +28,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        TextAsset gameTextAsset = Resources.Load<gameTextAsset>("Zork"); //No file extension due to Unity just referring it to Zork. 
+        Game game = JsonConvert.DeserializeObject<Game>(gameTextAsset.text); 
+    
+        game.Start(InputService, OutputService)
     }
 
     

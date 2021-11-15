@@ -145,25 +145,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cire3\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ER247979\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cire3\\Documents\\GitHub\\Zork_In_Unity\\Zork.Console\\Zork.Console.csproj",
+      "projectUniqueName": "C:\\Users\\ER247979\\Documents\\GitHub\\Zork_In_Unity\\Zork.Console\\Zork.Console.csproj",
       "projectName": "Zork.Console",
-      "projectPath": "C:\\Users\\cire3\\Documents\\GitHub\\Zork_In_Unity\\Zork.Console\\Zork.Console.csproj",
-      "packagesPath": "C:\\Users\\cire3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cire3\\Documents\\GitHub\\Zork_In_Unity\\Zork.Console\\obj\\",
+      "projectPath": "C:\\Users\\ER247979\\Documents\\GitHub\\Zork_In_Unity\\Zork.Console\\Zork.Console.csproj",
+      "packagesPath": "C:\\Users\\ER247979\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ER247979\\Documents\\GitHub\\Zork_In_Unity\\Zork.Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\cire3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ER247979\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -176,8 +181,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\cire3\\Documents\\GitHub\\Zork_In_Unity\\Zork.Common\\Zork.Common.csproj": {
-              "projectPath": "C:\\Users\\cire3\\Documents\\GitHub\\Zork_In_Unity\\Zork.Common\\Zork.Common.csproj"
+            "C:\\Users\\ER247979\\Documents\\GitHub\\Zork_In_Unity\\Zork.Common\\Zork.Common.csproj": {
+              "projectPath": "C:\\Users\\ER247979\\Documents\\GitHub\\Zork_In_Unity\\Zork.Common\\Zork.Common.csproj"
             }
           }
         }
@@ -212,7 +217,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
