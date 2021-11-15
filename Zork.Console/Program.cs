@@ -23,7 +23,7 @@ namespace Zork
             game.Start((IInputService)input, (IOutputService)output);
             output.WriteLine(string.IsNullOrWhiteSpace(game.WelcomeMessage) ? "Thanks for playing!" : game.ExitMessage);
 
-            while (game.IsRunning)
+            while (game.IsRunning) //loop
             {
                 Room previousRoom = null;
                 output.WriteLine(game.Player.Location);

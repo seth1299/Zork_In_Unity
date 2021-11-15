@@ -13,8 +13,8 @@ namespace Zork
         public World World { get; }
 
         [JsonIgnore]
-        public Room Location 
-        { 
+        public Room Location
+        {
             get
             {
                 return _location;
@@ -49,5 +49,6 @@ namespace Zork
 
             return isValidMove;
         }
+        private Room_
     }
 }

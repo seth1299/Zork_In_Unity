@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UnityOutputService OutputService;
 
-
+    [SerializeField]
+    private TextMeshProGUI CurrentLocationText;
 
 
 
@@ -29,18 +30,30 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         TextAsset gameTextAsset = Resources.Load<gameTextAsset>("Zork"); //No file extension due to Unity just referring it to Zork. 
-        Game game = JsonConvert.DeserializeObject<Game>(gameTextAsset.text); 
+        Game _fgame = JsonConvert.DeserializeObject<Game>(gameTextAsset.text);
+
+                                                                                                                                                                            //Refer to 11/15/21 panopto @ 254 for different Refactor
+
+        CurrentLocationText.text = _game.Player.Location.ToString();
+        _game.Start(InputService, OutputService)
     
-        game.Start(InputService, OutputService)
-    }
+            
+            
+            
+            
+            
+            
+            }
 
     
-    void Update()
+    private void Update()
     {
-        
+        CurrentLocationText.text = game.Player.Location.ToString();
     }
 
     [SerializeField]
     private string ZorkGameFilename = "Zork";
 
+    private Game _game;
+    private Room _previousLocation;
 }
