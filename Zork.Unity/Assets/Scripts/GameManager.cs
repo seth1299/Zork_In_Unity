@@ -2,53 +2,38 @@
 using UnityEngine;
 using Zork;
 using Newtonsoft.Json;
+using TMPro;
 
 public class GameManager : MonoBehaviour
     
 {
 
     [SerializeField]
-    private UnityinputService InputService
+    private UnityInputService InputService;
 
     [SerializeField]
     private UnityOutputService OutputService;
 
     [SerializeField]
-    private TextMeshProGUI CurrentLocationText;
-
-
-
-    void Awake()
-    {
-      TextAsset defaultGameFilename = Resources.Load<TextAsset>(ZorkGameFilename);
-        Game.Start(defaultGameFilename.text); //refer to 33:16 in part 1
-
-
-    }
-
+    private TextMeshProUGUI CurrentLocationText;
 
     void Start()
     {
-        TextAsset gameTextAsset = Resources.Load<gameTextAsset>("Zork"); //No file extension due to Unity just referring it to Zork. 
-        Game _fgame = JsonConvert.DeserializeObject<Game>(gameTextAsset.text);
+        TextAsset gameTextAsset = Resources.Load<TextAsset>(ZorkGameFilename); //No file extension due to Unity just referring it to Zork. 
+        _game = JsonConvert.DeserializeObject<Game>(gameTextAsset.text);
+        _game.Player.LocationChanged += (sender, newLocation) => CurrentLocationText.text = newLocation.ToString();
 
-                                                                                                                                                                            //Refer to 11/15/21 panopto @ 254 for different Refactor
-
-        CurrentLocationText.text = _game.Player.Location.ToString();
-        _game.Start(InputService, OutputService)
-    
-            
-            
-            
-            
-            
-            
-            }
+        _game.Start(InputService, OutputService);
+    }
 
     
     private void Update()
     {
-        CurrentLocationText.text = game.Player.Location.ToString();
+        if ( _game.Player.Location != _previousLocation )
+        {
+            CurrentLocationText.text = _game.Player.Location.ToString();
+            _previousLocation = _game.Player.Location;
+        }
     }
 
     [SerializeField]

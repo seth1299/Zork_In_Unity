@@ -1,10 +1,10 @@
 
 using UnityEngine;
 using TMPro;
-using Zork;
-using Newtonsoft.Json;
+using System;
+using Zork.Common;
 
-public class UnityinputService : MonoBehaviour, IInputService
+public class UnityInputService : MonoBehaviour, IInputService
     
 {
     [SerializeField]
@@ -12,18 +12,11 @@ public class UnityinputService : MonoBehaviour, IInputService
 
     public event EventHandler<string> InputReceived;
 
-
-
-private void update()
+    void Update()
     {
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
 
-
-
-
-
-
+        }
     }
-
-
 }

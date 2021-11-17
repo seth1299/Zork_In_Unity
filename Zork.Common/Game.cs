@@ -61,12 +61,7 @@ namespace Zork
 
             Output.WriteLine(string.IsNullOrWhiteSpace(WelcomeMessage) ? "Welcome to Zork!" : WelcomeMessage);
 
-            IsRunning = true;
-            
-
-                
-
-            
+            IsRunning = true;            
         }
 
         private void InputReceivedHandler(object sender, string commandString)
