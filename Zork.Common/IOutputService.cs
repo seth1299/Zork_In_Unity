@@ -4,6 +4,12 @@
     {
         void Write(object value);
 
+        void Write(string value);
+
         void WriteLine(object value);
+
+        void WriteLine(string value);
+
+        void Clear();
     }
 }

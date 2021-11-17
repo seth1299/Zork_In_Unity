@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string ZorkGameFilename = "Zork";
 
+    [SerializeField]
+    private UnityOutputService Output;
+
     private Game _game;
     private Room _previousLocation;
 }

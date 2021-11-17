@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Zork.Common;
 
+
 namespace Zork
 {
     public class Game : INotifyPropertyChanged
@@ -26,10 +27,11 @@ namespace Zork
 
         [JsonIgnore]
         public bool IsRunning { get; set; }
+        
+        [JsonIgnore]
+        public IOutputService Output { get; private set; } //added JSONIgnore and get/set 11/17/21
 
-        public IOutputService Output;
-
-        public IInputService Input;
+    public IInputService Input;
 
         [JsonIgnore]
         public Dictionary<string, Command> Commands { get; private set; }
@@ -98,7 +100,7 @@ namespace Zork
         public static void Look(Game game) => game.Output.WriteLine(game.Player.Location.Description);
 
         //Refer to 24:15 in Part 1 video
-        public static void StartFromFile(string gamefilename)
+        public static void StartFromFile(string gamefilename, IOutputService)
         {
             if (!File.Exists(gamefilename))
             {
