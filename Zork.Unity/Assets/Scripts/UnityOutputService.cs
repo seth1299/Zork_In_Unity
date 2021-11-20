@@ -12,26 +12,15 @@ public class UnityOutputService : MonoBehaviour, IOutputService
         throw new System.NotImplementedException();
     }
 
-    public void Write(object value)
-    {
-
-    }
-
-    public void Write(string value)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void WriteLine(object value)
     {
-        OutputText.text = value.ToString();
+        OutputText.text = ($"{value.ToString()}\n");
     }
 
-    public void WriteLine(string value)
+    public void Write(object value)
     {
-        WriteLine(value.ToString());
+        OutputText.text = ($"{value.ToString()}");
     }
-
 
     [SerializeField]
     private TextMeshProUGUI OutputText;

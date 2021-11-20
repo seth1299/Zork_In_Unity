@@ -100,8 +100,10 @@ namespace Zork
             }
             else
             {
-                Output.WriteLine("Unknown command.");
+                //Output.WriteLine("Unknown command.");
             }
+
+                Output.WriteLine("Fjidasfisadfniasdf");
 
         }
 
@@ -110,6 +112,10 @@ namespace Zork
             if (game.Player.Move(direction) == false)
             {
                 game.Output.WriteLine("The way is shut!");
+            }
+            else
+            {
+                game.Output.WriteLine(game.Player.Location.Name);
             }
         }
 

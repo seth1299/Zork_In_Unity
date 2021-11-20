@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
             CurrentLocationText.text = _game.Player.Location.ToString();
             _previousLocation = _game.Player.Location;
         }
+        if (Input.GetKey(KeyCode.Return))
+        {
+            InputService.ProcessInput();
+        }
     }
 
     [SerializeField]

@@ -5,5 +5,7 @@ namespace Zork.Common
 		void Write(object value);
 		
 		void WriteLine(object value);
+
+		void Clear();
 	}
 }

@@ -15,17 +15,15 @@ public class UnityInputService : MonoBehaviour, IInputService
     public event EventHandler<string> InputReceived;
 
     
-      void Update()
-      {
-        if (Input.GetKeyDown(KeyCode.Return))
+    public void ProcessInput()
+    {
+        string inputString = InputField.text;
+        if (string.IsNullOrWhiteSpace(inputString) == false)
         {
-            string inputString = InputField.text;
-            if (string.IsNullOrWhiteSpace(inputString) == false)
-            {
-                InputReceived?.Invoke(this, inputString);
-            }
-            InputField.text = string.Empty;
-
+          InputReceived?.Invoke(this, inputString);
         }
-      }   
+        InputField.text = string.Empty;
+    }
+
+
 }
