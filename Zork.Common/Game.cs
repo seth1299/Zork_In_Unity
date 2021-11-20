@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Zork.Common;
+using Zork;
 
 
 namespace Zork
@@ -24,6 +25,8 @@ namespace Zork
 
         [JsonIgnore]
         public Player Player { get; private set; }
+        [JsonIgnore]
+        public IInputService Output { get; private set; }
 
         [JsonIgnore]
         public bool IsRunning { get; set; }
@@ -35,6 +38,7 @@ namespace Zork
 
         [JsonIgnore]
         public Dictionary<string, Command> Commands { get; private set; }
+        public static object Instance { get; private set; }
 
         public Game(World world, Player player)
         {
@@ -65,6 +69,18 @@ namespace Zork
 
             IsRunning = true;            
         }
+
+        public static void Start(string defaultGameFilename, IInputService input, IOutputService output)
+        {
+            Instance = Load(defaultGameFilename);
+            Instance.Input = input;
+            Instance.Output = output;
+            Instance.LoadCommands();
+            Instance.DisplayWelcomeMessage();
+            Instance.mIsRunning = true;
+            Instance.Input.InputReived += Instance.InputReceived;
+        }
+
 
         private void InputReceivedHandler(object sender, string commandString)
         {

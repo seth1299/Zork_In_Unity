@@ -32,6 +32,7 @@ namespace Zork
                     Game.Look(game);
                     previousRoom = game.Player.Location;
                 }
+                
 
                 output.Write("\n> ");
                 input.ProcessInput();
