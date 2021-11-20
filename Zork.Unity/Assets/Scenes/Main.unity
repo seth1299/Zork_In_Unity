@@ -1234,7 +1234,6 @@ MonoBehaviour:
   OutputService: {fileID: 723726386}
   CurrentLocationText: {fileID: 724736682}
   ZorkGameFilename: Zork
-  Output: {fileID: 0}
 --- !u!4 &723726385
 Transform:
   m_ObjectHideFlags: 0
@@ -1262,6 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a711881d6a72c954ca525eff0e7ade93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OutputText: {fileID: 608748977}
 --- !u!114 &723726387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,6 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811070591b67709489410727510cbcd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputField: {fileID: 655016190}
 --- !u!1 &724736680
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace Zork
 
             output.WriteLine(string.IsNullOrWhiteSpace(game.WelcomeMessage) ? "Welcome to Zork!" : game.WelcomeMessage);
             game.Start((IInputService)input, (IOutputService)output);
-            output.WriteLine(string.IsNullOrWhiteSpace(game.WelcomeMessage) ? "Thanks for playing!" : game.ExitMessage);
+            output.WriteLine(string.IsNullOrWhiteSpace(game.ExitMessage) ? "Thanks for playing!" : game.ExitMessage);
 
             while (game.IsRunning) //loop
             {

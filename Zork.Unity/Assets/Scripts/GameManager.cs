@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
         _game = JsonConvert.DeserializeObject<Game>(gameTextAsset.text);
         _game.Player.LocationChanged += (sender, newLocation) => CurrentLocationText.text = newLocation.ToString();
 
-        _game.Start(InputService, OutputService);
+        if ( InputService != null && OutputService != null )
+            _game?.Start(InputService, OutputService);
     }
 
     
@@ -38,9 +39,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private string ZorkGameFilename = "Zork";
-
-    [SerializeField]
-    private UnityOutputService Output;
 
     private Game _game;
     private Room _previousLocation;

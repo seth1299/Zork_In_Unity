@@ -100,7 +100,7 @@ namespace Zork
         public static void Look(Game game) => game.Output.WriteLine(game.Player.Location.Description);
 
         //Refer to 24:15 in Part 1 video
-        public static void StartFromFile(string gamefilename, IOutputService)
+        public static void StartFromFile(string gamefilename, IOutputService outputService)
         {
             if (!File.Exists(gamefilename))
             {

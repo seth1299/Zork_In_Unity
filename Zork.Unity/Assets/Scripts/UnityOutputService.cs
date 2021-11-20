@@ -24,7 +24,7 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     public void WriteLine(object value)
     {
-        OutputText.text = value;
+        OutputText.text = value.ToString();
     }
 
     public void WriteLine(string value)
