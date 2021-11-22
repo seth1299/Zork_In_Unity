@@ -88,6 +88,11 @@ namespace Zork
 
         private void InputReceivedHandler(object sender, string commandString)
         {
+            if (commandString.ToUpper().Trim().Equals("QUIT") || commandString.ToUpper().Trim().Equals("Q") commandString.ToUpper().Trim().Equals("quit") || commandString.ToUpper().Trim().Equals("q") || commandString.ToUpper().Trim().Equals("bye") || commandString.ToUpper().Trim().Equals("BYE"))
+            {
+                Application.Quit();
+            }
+
             Command foundCommand = null;
             foreach (Command command in Commands.Values)
             {
