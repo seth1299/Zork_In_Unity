@@ -56,7 +56,7 @@ namespace Zork
             {
                 return _score;
             }
-            private set
+            set
             {
                 if (_score != value)
                 {
@@ -65,8 +65,6 @@ namespace Zork
                 }
             }
         }
-
-        public int Score {get; set;}
 
         public Player(World world, string startingLocation)
         {
@@ -86,6 +84,11 @@ namespace Zork
             }
 
             return isValidMove;
+        }
+
+        public void IncreaseMoves()
+        {
+            Moves++;
         }
     }
 }

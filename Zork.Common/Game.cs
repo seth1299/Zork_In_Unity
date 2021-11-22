@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Zork.Common;
+using Zork;
+
 
 namespace Zork
 {
@@ -23,16 +25,18 @@ namespace Zork
 
         [JsonIgnore]
         public Player Player { get; private set; }
+        [JsonIgnore]
+        public static IInputService IInput { get; private set; }
 
         [JsonIgnore]
         public bool IsRunning { get; set; }
-
-        public IOutputService Output;
-
-        public IInputService Input;
+        
+        [JsonIgnore]
+        public static IOutputService Output { get; private set; } //added JSONIgnore and get/set 11/17/21
 
         [JsonIgnore]
         public Dictionary<string, Command> Commands { get; private set; }
+        public static Game Instance { get; private set; }
 
         public Game(World world, Player player)
         {
@@ -41,12 +45,13 @@ namespace Zork
 
             Commands = new Dictionary<string, Command>()
             {
-                { "QUIT", new Command("QUIT", new string[] { "QUIT", "Q", "BYE" }, Quit) },
-                { "LOOK", new Command("LOOK", new string[] { "LOOK", "L" }, Look) },
-                { "NORTH", new Command("NORTH", new string[] { "NORTH", "N" }, game => Move(game, Directions.North)) },
-                { "SOUTH", new Command("SOUTH", new string[] { "SOUTH", "S" }, game => Move(game, Directions.South)) },
-                { "EAST", new Command("EAST", new string[] { "EAST", "E"}, game => Move(game, Directions.East)) },
-                { "WEST", new Command("WEST", new string[] { "WEST", "W" }, game => Move(game, Directions.West)) },
+                { "QUIT", new Command("QUIT", new string[] { "QUIT", "Q", "BYE", "bye", "q", "quit" }, Quit) },
+                { "LOOK", new Command("LOOK", new string[] { "LOOK", "L", "l", "look" }, Look) },
+                { "NORTH", new Command("NORTH", new string[] { "NORTH", "N", "n", "north" }, game => Move(game, Directions.North)) },
+                { "SOUTH", new Command("SOUTH", new string[] { "SOUTH", "S", "s", "south" }, game => Move(game, Directions.South)) },
+                { "EAST", new Command("EAST", new string[] { "EAST", "E", "e", "east"}, game => Move(game, Directions.East)) },
+                { "WEST", new Command("WEST", new string[] { "WEST", "W", "w", "west" }, game => Move(game, Directions.West)) },
+                { "REWARD", new Command("REWARD", new string[] { "REWARD", "R", "r", "reward" }, game => Reward()) }
             };
         }
 
@@ -56,20 +61,37 @@ namespace Zork
             Output = output;
 
             Assert.IsNotNull(input);
-            Input = input;
-            Input.InputReceived += InputReceivedHandler;
+            IInput = input;
+            IInput.InputReceived += InputReceivedHandler;
 
-            Output.WriteLine(string.IsNullOrWhiteSpace(WelcomeMessage) ? "Welcome to Zork!" : WelcomeMessage);
+            DisplayWelcomeMessage();
 
             IsRunning = true;            
         }
+
+        public void DisplayWelcomeMessage()
+        {
+            Output.WriteLine(string.IsNullOrWhiteSpace(WelcomeMessage) ? "Welcome to Zork!" : WelcomeMessage);
+        }
+
+        public static void Start(string defaultGameFilename, IInputService input, IOutputService output)
+        {
+            Instance = Load(defaultGameFilename);
+            IInput = input;
+            Output = output;
+            //Instance.LoadCommands();
+            Instance.DisplayWelcomeMessage();
+            Instance.IsRunning = true;
+            //IInput.InputReceived += Instance.InputReceived;
+        }
+
 
         private void InputReceivedHandler(object sender, string commandString)
         {
             Command foundCommand = null;
             foreach (Command command in Commands.Values)
             {
-                if (command.Verbs.Contains(commandString))
+                if (command.Verbs.Contains(commandString.ToUpper().Trim()))
                 {
                     foundCommand = command;
                     break;
@@ -79,33 +101,47 @@ namespace Zork
             if (foundCommand != null)
             {
                 foundCommand.Action(this);
+                Player.IncreaseMoves();
             }
             else
             {
                 Output.WriteLine("Unknown command.");
             }
+        }
 
+        private void Reward()
+        {
+            Player.Score += 5;
         }
 
         private static void Move(Game game, Directions direction)
         {
             if (game.Player.Move(direction) == false)
             {
-                game.Output.WriteLine("The way is shut!");
+                Output.WriteLine("The way is shut!");
+            }
+            else
+            {
+                Output.WriteLine($"{game.Player.Location.Name}\n{game.Player.Location.Description}");
             }
         }
 
-        public static void Look(Game game) => game.Output.WriteLine(game.Player.Location.Description);
+        public static IInputService GetIInput()
+        {
+            return IInput;
+        }
+
+        public static void Look(Game game) => Output.WriteLine(game.Player.Location.Description);
 
         //Refer to 24:15 in Part 1 video
-        public static void StartFromFile(string gamefilename)
+        public static void StartFromFile(string gamefilename, IOutputService outputService)
         {
             if (!File.Exists(gamefilename))
             {
                 throw new FileNotFoundException("Expected File.", gamefilename);
             }
 
-            Start(File.ReadAllText(gamefilename));
+            Start(File.ReadAllText(gamefilename), IInput, Output);
 
         }
 
@@ -117,9 +153,19 @@ namespace Zork
     public static Game Load(string defaultGameFilename) //11/12/21
         {
             Game game = JsonConvert.DeserializeObject<Game>(defaultGameFilename);
-            game.Player = game.World.SpawnPlayer();
+            //game.Player = game.World.SpawnPlayer();
 
             return game;
+        }
+
+    public int GetPlayerScore()
+        {
+            return Player.Score;
+        }
+
+        public int GetPlayerMoves()
+        {
+            return Player.Moves;
         }
     
     }

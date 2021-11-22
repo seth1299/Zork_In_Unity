@@ -10,7 +10,10 @@ namespace Zork
 		public void ProcessInput()
 		{
 			string inputString = Console.ReadLine().Trim().ToUpper();
-			InputReceived?.Invoke(this, inputString);
+			if (string.IsNullOrWhiteSpace(inputString) == false)
+			{ 
+				InputReceived?.Invoke(this, inputString);
+            }
 		}
 	}
 }
