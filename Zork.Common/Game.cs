@@ -90,7 +90,7 @@ namespace Zork
         {
             if (commandString.ToUpper().Trim().Equals("QUIT") || commandString.ToUpper().Trim().Equals("Q") commandString.ToUpper().Trim().Equals("quit") || commandString.ToUpper().Trim().Equals("q") || commandString.ToUpper().Trim().Equals("bye") || commandString.ToUpper().Trim().Equals("BYE"))
             {
-                Application.Quit();
+                IsRunning = false;
             }
 
             Command foundCommand = null;

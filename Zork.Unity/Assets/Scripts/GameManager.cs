@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        if (!_game.IsRunning)
+        {
+            Application.Quit();
+        }
+
         if ( _game.Player.Location != _previousLocation )
         {
             CurrentLocationText.text = _game.Player.Location.ToString();
